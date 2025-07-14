@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="SheepProject"
+run/main_scene="uid://bg4bg4fwmu00m"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[layer_names]
+
+2d_physics/layer_1="Entity"
+2d_physics/layer_2="Structure"
 
 [rendering]
 

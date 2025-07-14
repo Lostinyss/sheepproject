@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://lo5kj1b15a1r"]
+
+[ext_resource type="Script" uid="uid://dhcyhfob076h0" path="res://Animal/Sheep/sheep.gd" id="1_tsfa7"]
+[ext_resource type="Texture2D" uid="uid://dd0gqvg30mxjf" path="res://Artworks/Dino.png" id="2_mu0e8"]
+[ext_resource type="PackedScene" uid="uid://c4enpfh0vnjxe" path="res://Component/component.tscn" id="3_tiw6s"]
+[ext_resource type="PackedScene" uid="uid://b7kf31tl7poj4" path="res://Component/stats.tscn" id="4_sp8j1"]
+[ext_resource type="Script" uid="uid://ul1ks2a2qitt" path="res://Component/stats.gd" id="5_k4vlk"]
+[ext_resource type="PackedScene" uid="uid://rqefo61yjm2f" path="res://Component/movement.tscn" id="6_mu0e8"]
+[ext_resource type="Script" uid="uid://7fv6i7dba3qn" path="res://Component/movement.gd" id="7_hj28e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ldl22"]
+radius = 9.0
+
+[node name="Sheep" type="CharacterBody2D"]
+collision_mask = 2
+input_pickable = true
+script = ExtResource("1_tsfa7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -12)
+scale = Vector2(0.0410156, 0.0410156)
+texture = ExtResource("2_mu0e8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_ldl22")
+
+[node name="Component" parent="." instance=ExtResource("3_tiw6s")]
+
+[node name="Stats" parent="Component" instance=ExtResource("4_sp8j1")]
+script = ExtResource("5_k4vlk")
+
+[node name="Movement" parent="Component" instance=ExtResource("6_mu0e8")]
+script = ExtResource("7_hj28e")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

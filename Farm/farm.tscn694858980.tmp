@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg4bg4fwmu00m"]
+
+[ext_resource type="Script" uid="uid://d12gmfx24xbpi" path="res://Farm/farm.gd" id="1_p4x7a"]
+
+[node name="Farm" type="Node2D"]
+script = ExtResource("1_p4x7a")
+
+[node name="Flooring" type="TileMapLayer" parent="."]
